@@ -2,12 +2,15 @@ package learning.security.config.auth;
 
 import learning.security.model.User;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 /*
 시큐리티가 /login 요청을 대신 처리
@@ -19,10 +22,16 @@ User Object 타입 => UserDetails 타입 객체
 Security Session => Authentication => UserDetails
  */
 
+@Data
 @AllArgsConstructor
-public class PrincipalDetails implements UserDetails {
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private User user;
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return null;
+    }
 
     //해당 유저의 권한 리턴
     @Override
@@ -68,4 +77,9 @@ public class PrincipalDetails implements UserDetails {
         return true;
     }
 
+    @Override
+    public String getName() {
+        return null;
+    }
+    
 }
