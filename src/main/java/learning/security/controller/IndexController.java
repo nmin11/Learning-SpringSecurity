@@ -43,8 +43,10 @@ public class IndexController {
         return "OAuth session 정보 확인";
     }
 
+    //일반 로그인과 OAuth 로그인 둘 다 PrincipalDetails 정보를 받아올 수 있음
     @GetMapping("/user")
-    public @ResponseBody String user() {
+    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println("Principal Details : " + principalDetails.getUser());
         return "user";
     }
 
