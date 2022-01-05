@@ -37,9 +37,9 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
 
         if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
             oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
-        } else if (userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
+        } else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
             oAuth2UserInfo = new FacebookUserInfo(oAuth2User.getAttributes());
-        } else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
+        } else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
             oAuth2UserInfo = new NaverUserInfo((Map) oAuth2User.getAttributes().get("response"));
         } else {
             System.out.println("Google, Facebook, Naver 로그인만 지원합니다.");

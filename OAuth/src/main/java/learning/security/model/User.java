@@ -15,12 +15,13 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 public class User {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
     private String password;
     private String email;
-    private String role;    //ROLE_USER, ROLE_ADMIN
+    private String role;            //ROLE_USER, ROLE_ADMIN
     private String provider;
     private String providerId;
     @CreationTimestamp
@@ -36,4 +37,5 @@ public class User {
         this.providerId = providerId;
         this.createdDate = createdDate;
     }
+
 }
