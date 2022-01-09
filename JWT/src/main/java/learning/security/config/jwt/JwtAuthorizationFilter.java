@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+//Spring Security 의 BasicAuthenticationFilter - 권한이나 인증이 필요한 특정 주소 요청 시 해당 필터를 무조건 거치게
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private UserRepository userRepository;
@@ -34,7 +35,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
             return;
         }
-        System.out.println("header : "+header);
+        System.out.println("header : " + header);
         String token = request.getHeader(JwtProperties.HEADER_STRING)
                 .replace(JwtProperties.TOKEN_PREFIX, "");
 
@@ -51,8 +52,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             PrincipalDetails principalDetails = new PrincipalDetails(user);
             Authentication authentication =
                     new UsernamePasswordAuthenticationToken(
-                            principalDetails, //나중에 컨트롤러에서 DI 해서 쓸 때 사용하기 편함.
-                            null, // 패스워드는 모르니까 null 처리, 어차피 지금 인증하는게 아니니까!!
+                            principalDetails, //나중에 컨트롤러에서 DI 해서 쓸 때 사용하기 편함
+                            null, // 패스워드는 우선 null 처리
                             principalDetails.getAuthorities());
 
             // 강제로 시큐리티의 세션에 접근하여 값 저장

@@ -32,18 +32,18 @@ public class RestApiController {
     // Tip : JWT 를 사용하면 UserDetailsService 를 호출하지 않기 때문에 @AuthenticationPrincipal 사용 불가능
     // 왜냐하면 @AuthenticationPrincipal 은 UserDetailsService 에서 리턴될 때 만들어지기 때문
 
-    // 유저 혹은 매니저 혹은 어드민이 접근 가능
+    // 유저, 매니저, 어드민이 접근 가능
     @GetMapping("user")
     public String user(Authentication authentication) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-        System.out.println("principal : "+principal.getUser().getId());
-        System.out.println("principal : "+principal.getUser().getUsername());
-        System.out.println("principal : "+principal.getUser().getPassword());
+        System.out.println("principal : " + principal.getUser().getId());
+        System.out.println("principal : " + principal.getUser().getUsername());
+        System.out.println("principal : " + principal.getUser().getPassword());
 
-        return "<h1>user</h1>";
+        return "<h1>User</h1>";
     }
 
-    // 매니저 혹은 어드민이 접근 가능
+    // 매니저, 어드민이 접근 가능
     @GetMapping("manager/reports")
     public String reports() {
         return "<h1>Reports</h1>";

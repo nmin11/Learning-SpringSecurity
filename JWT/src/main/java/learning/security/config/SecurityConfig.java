@@ -2,7 +2,6 @@ package learning.security.config;
 
 import learning.security.config.jwt.JwtAuthenticationFilter;
 import learning.security.config.jwt.JwtAuthorizationFilter;
-import learning.security.filter.MyFilter3;
 import learning.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
